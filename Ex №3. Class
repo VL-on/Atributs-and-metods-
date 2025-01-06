@@ -1,0 +1,60 @@
+class House:
+    def __init__(self, name, number_of_floors):
+                self.name = name
+                self.number_of_floors = number_of_floors
+                self.check()
+
+    def check(self):
+        if isinstance(self.number_of_floors, int):
+            return self.number_of_floors
+        else:
+            print('Нельзя определить высоту здания')
+            exit()
+
+    def __eq__(self, other):
+        self.check()
+        return self.number_of_floors == other.number_of_floors
+
+    def __lt__(self, other):
+        self.check()
+        return self.number_of_floors < other.number_of_floors
+
+    def __le__(self, other):
+        self.check()
+        return self.number_of_floors <= other.number_of_floors
+
+    def __gt__(self, other):
+        self.check()
+        return self.number_of_floors > other.number_of_floors
+
+    def __ge__(self, other):
+        self.check()
+        return self.number_of_floors >= other.number_of_floors
+
+    def __ne__(self, other):
+        self.check()
+        return self.number_of_floors != other.number_of_floors
+
+    def __add__(self, value):
+        self.check()
+        self.number_of_floors = self.number_of_floors + value
+        return self.number_of_floors
+
+    def __iadd__(self, value):
+        self.check()
+        self.number_of_floors = self.number_of_floors + value
+        return self.number_of_floors
+
+    def __radd__(self, value):
+        self.check()
+        self.number_of_floors = self.number_of_floors + value
+        return self.number_of_floors
+
+h1 = House('ЖК Горский', 11)
+h2 = House('Домик в деревне', 122)
+h3 = House('Москва Cити', 70)
+
+print(h1 == h2)
+print(h3 != h1)
+h2 += 5
+print(h2)
